@@ -8,7 +8,7 @@ public class Text extends Figure {
 
     String text;
     String font;
-    String type;
+    int type;
     int size;
     Random rand = new Random();
     
@@ -30,13 +30,7 @@ public class Text extends Figure {
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        if (this.type == "BOLD"){
-            g2d.setFont( new Font(font, Font.BOLD, size) );
-        } else if (this.type == "ITALIC")  {
-            g2d.setFont( new Font(font, Font.ITALIC, size) );
-        } else{
-            g2d.setFont( new Font(font, Font.PLAIN, size) );
-        }
+        g2d.setFont( new Font(font, type, size));
         g2d.setColor(new Color(this.r, this.g, this.b));
         g2d.drawString(this.text, this.x, this.y);
     }
@@ -47,9 +41,9 @@ public class Text extends Figure {
         return fonts[rand.nextInt(fonts.length)];
     }
 
-    private String PickRandomType(){
-        String[] type = {"BOLD", "PLAIN", "ITALIC"};
-        return type[rand.nextInt(type.length)];
+    private int PickRandomType(){
+        // 0 (PLAIN)  1 (BOLD)  2(ITALIC)
+        return rand.nextInt(3);
     }
 
     public void grow(){
