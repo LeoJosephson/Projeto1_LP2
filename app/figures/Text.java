@@ -51,4 +51,8 @@ public class Text extends Figure {
         String[] type = {"BOLD", "PLAIN", "ITALIC"};
         return type[rand.nextInt(type.length)];
     }
+
+    public void grow(){
+        this.size += 2;
+    }
 }

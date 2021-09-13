@@ -31,4 +31,10 @@ public class Triangle extends Figure2d {
         g2d.setColor(new Color(this.r, this.g, this.b));
         g2d.drawPolygon(this.coordsx, this.coordsy, 3);    
     }
+
+    public void grow(){
+        this.coordsx[0] -= 1;
+        this.coordsy[1] -= 1;
+        this.coordsx[2] += 1;
+    }
 }

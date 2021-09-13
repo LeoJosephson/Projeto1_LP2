@@ -23,5 +23,10 @@ public class Line extends Figure {
         g2d.drawLine(this.x, this.y, this.x2, this.y2);
         
     }
-
+    
+    public void grow(){
+        if (x2 > x) this.x2 += 2;
+        else this.x += 2;
+            
+    }
 }
