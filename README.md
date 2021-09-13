@@ -13,3 +13,4 @@
   * 
 -> Others:
 * Delete last shape (press del)
+* Grow last shape (press g)
