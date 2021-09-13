@@ -68,6 +68,13 @@ class ListFrame extends JFrame {
                 else if (evt.getKeyChar() == KeyEvent.VK_DELETE){
                     if (figs.size() > 0) figs.remove(figs.size()-1);
                 }
+                else if (evt.getKeyChar() == 'g'){
+                    if (figs.size() > 0){
+                        Figure fig = figs.get(figs.size() -1);
+                        fig.grow();
+                        figs.set(figs.size() -1, fig);
+                    }
+                }
                 
                 repaint(); 
                 }
