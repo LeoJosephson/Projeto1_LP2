@@ -75,6 +75,21 @@ class ListFrame extends JFrame {
                         figs.set(figs.size() -1, fig);
                     }
                 }
+                else if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_UP ) {
+                    if (figs.size() > 0){
+                        int dx = 0;
+                        int dy = 0;
+                        if(evt.getKeyCode() == KeyEvent.VK_DOWN) dy = 2;
+                        else if (evt.getKeyCode() == KeyEvent.VK_UP){ dy = -2;}
+                        else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) dx = 2;
+                        else if (evt.getKeyCode() == KeyEvent.VK_LEFT) dx = -2;
+                            
+                        
+                        Figure fig = figs.get(figs.size() -1);
+                        fig.mov(dx,dy);
+                        figs.set(figs.size() -1, fig);
+                    }
+                }
                 
                 repaint(); 
                 }

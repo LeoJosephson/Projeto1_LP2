@@ -29,4 +29,11 @@ public class Line extends Figure {
         else this.x += 2;
             
     }
+
+    public void mov(int dx, int dy){
+        this.x += dx;
+        this.x2 += dx;
+        this.y += dy;
+        this.y2 += dy;
+    }
 }

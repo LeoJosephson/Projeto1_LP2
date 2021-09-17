@@ -37,4 +37,11 @@ public class Triangle extends Figure2d {
         this.coordsy[1] -= 1;
         this.coordsx[2] += 1;
     }
+
+    public void mov(int dx, int dy){
+        for (int i=0; i<=2; i++){
+            this.coordsx[i] += dx;
+            this.coordsy[i] += dy;
+        }
+    }
 }

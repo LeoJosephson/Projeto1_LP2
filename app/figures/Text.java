@@ -49,4 +49,9 @@ public class Text extends Figure {
     public void grow(){
         this.size += 2;
     }
+
+    public void mov(int dx, int dy){
+        this.x += dx;
+        this.y += dy;
+    }
 }

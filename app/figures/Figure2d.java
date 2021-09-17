@@ -17,4 +17,9 @@ public abstract class Figure2d extends Figure {
         this.w += 2;
         this.h += 2;
     }
+
+    public void mov (int dx, int dy){
+        this.x += dx;
+        this.y += dy;
+    }
 }
