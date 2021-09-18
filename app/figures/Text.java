@@ -4,24 +4,26 @@ import java.awt.*;
 import java.util.List;
 import java.util.Locale;
 
-public class Text extends Figure {
 
+public class Text extends Figure {
+    int w, h;
     String text;
-    String font;
+    String family;
     int type;
     int size;
+    Font font;
     Random rand = new Random();
     
     public Text (int x, int y, int r, int g, int b, String text, int size) {
         super(x, y, r, g, b);
 
         this.text = text;
-        this.type = PickRandomType();
         this.size = size;
-        this.font = PickRandomFontFamily();
-    }
+        this.type = PickRandomType();
+        this.family = PickRandomFontFamily();
+        this.font =  new Font(family, type, size);
 
-    
+    }
 
     public void print () {
         System.out.format("Texto na posicao (%d,%d) com (%s)\n",
@@ -30,7 +32,14 @@ public class Text extends Figure {
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setFont( new Font(font, type, size));
+        
+        g2d.setFont(this.font);
+
+        FontMetrics fm = g.getFontMetrics(this.font);
+        
+        this.w = fm.stringWidth(this.text);
+        this.h = fm.getAscent();
+
         g2d.setColor(new Color(this.r, this.g, this.b));
         g2d.drawString(this.text, this.x, this.y);
     }
@@ -47,11 +56,20 @@ public class Text extends Figure {
     }
 
     public void grow(){
-        this.size += 2;
+        this.size += 1;
     }
 
     public void mov(int dx, int dy){
         this.x += dx;
         this.y += dy;
+    }
+
+    public boolean clicked (int ex, int ey){
+        if (ex >= this.x && ex<=this.x + this.w && ey<=this.y && ey>=this.y-this.h){
+            return true;
+        }
+        return false;
+
+
     }
 }

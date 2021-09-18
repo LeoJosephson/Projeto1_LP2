@@ -36,4 +36,9 @@ public class Line extends Figure {
         this.y += dy;
         this.y2 += dy;
     }
+
+    public boolean clicked(int ex, int ey){
+        return true;
+
+    }
 }

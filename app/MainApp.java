@@ -11,6 +11,7 @@ class MainApp {
     public static void main (String[] args) {
         ListFrame frame = new ListFrame();
         frame.setVisible(true);
+
     }
 }
 
@@ -32,7 +33,7 @@ class ListFrame extends JFrame {
                 public void keyPressed (KeyEvent evt) {
                 Dimension size = getContentPane().getSize();
                 int rgb_max = 255;
-                         
+                
                 int x = rand.nextInt(size.width);
                 int y = rand.nextInt(size.height);
                 int r = rand.nextInt(rgb_max);
@@ -88,6 +89,7 @@ class ListFrame extends JFrame {
                         Figure fig = figs.get(figs.size() -1);
                         fig.mov(dx,dy);
                         figs.set(figs.size() -1, fig);
+
                     }
                 }
                 
@@ -96,6 +98,32 @@ class ListFrame extends JFrame {
                 
             }
         );
+
+        this.addMouseListener(
+            new MouseAdapter(){
+                public void mousePressed(MouseEvent e){
+                    int x=e.getX();
+                    int y=e.getY();
+                    System.out.format("(%d,%d)\n", x, y);
+                    if (figs.size() > 0){
+
+                        int i = last_occurrence(figs, figs.size()-1, x, y);
+
+                        if (i != -1){
+                            
+                            Figure figure = figs.get(i);
+                            figs.remove(i);
+                            figs.add(figure);
+                            repaint();
+                        }
+                    }
+                }
+            }
+        );
+
+        
+
+        
 
         this.setTitle("Lista de Figures");
         this.setSize(350, 350);
@@ -114,4 +142,18 @@ class ListFrame extends JFrame {
         return figs;
     }
     */
+
+    public int last_occurrence(ArrayList<Figure> figs, int length, int x, int y){
+
+        if (length == -1){ 
+            return -1;
+        }
+        Figure fig = figs.get(length);
+        
+        if (fig.clicked(x,y)){
+            return length;
+        } else{
+            return last_occurrence(figs, length-1, x, y);
+        }
+    }
 }

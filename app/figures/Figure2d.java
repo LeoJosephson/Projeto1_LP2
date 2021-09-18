@@ -19,7 +19,17 @@ public abstract class Figure2d extends Figure {
     }
 
     public void mov (int dx, int dy){
+
         this.x += dx;
         this.y += dy;
+    }
+
+    public boolean clicked (int ex, int ey){
+        if (ex >= this.x && ex<=this.x + this.w && ey>=this.y && ey<=this.y+this.h){
+            return true;
+        }
+        return false;
+
+
     }
 }
