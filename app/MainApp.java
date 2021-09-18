@@ -104,7 +104,6 @@ class ListFrame extends JFrame {
                 public void mousePressed(MouseEvent e){
                     int x=e.getX();
                     int y=e.getY();
-                    System.out.format("(%d,%d)\n", x, y);
                     if (figs.size() > 0){
 
                         int i = last_occurrence(figs, figs.size()-1, x, y);
