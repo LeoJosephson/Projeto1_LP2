@@ -13,6 +13,7 @@
   * Triangle (press a)
   
 -> Others:
-* Delete last shape (press del)
-* Grow last shape (press g)
-* Move objects (⬅, ➡, ⬆, ⬇) 
+* Delete object (press del)
+* Grow object (press g)
+* Move object (⬅, ➡, ⬆, ⬇)
+* Select object (right/left click)
