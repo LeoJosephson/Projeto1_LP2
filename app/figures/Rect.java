@@ -21,9 +21,4 @@ public class Rect extends Figure2d {
         g2d.drawRect(this.x,this.y, this.w,this.h);
     }
 
-    public void mov (int dx, int dy){
-
-        this.x += dx;
-        this.y += dy;
-    }
 }
