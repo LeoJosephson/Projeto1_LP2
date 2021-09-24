@@ -8,6 +8,7 @@ public class Triangle extends Figure2d {
     Random rand = new Random();
     int[] coordsx = new int[3];
     int[] coordsy = new int[3];
+    Polygon triangle;
     public Triangle (int x, int y, int w, int h, int r, int g, int b, int fr, int fg, int fb) {
         super(x, y, w, h, r, g, b, fr, fg, fb);
         this.coordsx[0] = this.x;
@@ -29,7 +30,8 @@ public class Triangle extends Figure2d {
         g2d.setColor(new Color(this.fr, this.fg, this.fb));
         g2d.fillPolygon(this.coordsx, this.coordsy, 3);
         g2d.setColor(new Color(this.r, this.g, this.b));
-        g2d.drawPolygon(this.coordsx, this.coordsy, 3);    
+        this.triangle = new Polygon(this.coordsx, this.coordsy, 3);
+        g2d.drawPolygon(triangle);    
     }
 
     public void grow(){
@@ -47,33 +49,9 @@ public class Triangle extends Figure2d {
         }
     }
 
-    public int area(int x1, int y1, int x2, int y2, int x3, int y3)
-    {
-        int a = ((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2);
-        return a;
-    }
-    
-
-    public boolean isInside(int x1, int y1, int x2, int y2, int x3, int y3, int x, int y)
-    {  
-
-        float A = area(x1, y1, x2, y2, x3, y3);
-        
-
-        float A1 = area(x, y, x2, y2, x3, y3);
-        
-
-        float A2 = area(x1, y1, x, y, x3, y3);
-
-        float A3 = area(x1, y1, x2, y2, x, y);
-            
-
-        boolean is = (A == A1 + A2 + A3);
-        return is;
-    }
-
     public boolean clicked(int ex, int ey){
-        return isInside(this.coordsx[0], this.coordsy[0], this.coordsx[1], this.coordsy[1], this.coordsx[2], this.coordsy[2], ex, ey);
+        if (this.triangle.contains(ex, ey)) return true;
+        else return false;
     }
 
     public void focus(Graphics g){
