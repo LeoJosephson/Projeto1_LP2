@@ -34,7 +34,7 @@ public class Text extends Figure {
         Graphics2D g2d = (Graphics2D) g;
         Font font =  new Font(family, type, size);
         g2d.setFont(font);
-
+        
         FontMetrics fm = g.getFontMetrics(font);
         
         this.w = fm.stringWidth(this.text);
@@ -71,4 +71,10 @@ public class Text extends Figure {
         return false;
     }
 
+    public void focus(Graphics g){
+        int y1 = this.y - this.h;
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(new Color(255, 0, 0));
+        g2d.drawRect(this.x-2, y1-2, this.w+4, this.h+4);
+    }
 }
