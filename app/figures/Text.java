@@ -21,10 +21,10 @@ public class Text extends Figure {
         this.size = size;
         this.type = PickRandomType();
         this.family = PickRandomFontFamily();
-        this.font =  new Font(family, type, size);
+
 
     }
-
+    
     public void print () {
         System.out.format("Texto na posicao (%d,%d) com (%s)\n",
             this.x, this.y, this.text);
@@ -32,7 +32,7 @@ public class Text extends Figure {
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        
+        this.font =  new Font(family, type, size);
         g2d.setFont(this.font);
 
         FontMetrics fm = g.getFontMetrics(this.font);
@@ -56,7 +56,7 @@ public class Text extends Figure {
     }
 
     public void grow(){
-        this.size += 1;
+        this.size += 2;
     }
 
     public void mov(int dx, int dy){
@@ -69,7 +69,6 @@ public class Text extends Figure {
             return true;
         }
         return false;
-
-
     }
+
 }

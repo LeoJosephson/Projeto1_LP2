@@ -20,4 +20,5 @@ public abstract class Figure {
 
     public abstract boolean clicked(int ex, int ey);
 
+    public abstract void focus(Graphics g);
 }

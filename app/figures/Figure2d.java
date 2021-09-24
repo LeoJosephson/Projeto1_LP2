@@ -1,5 +1,5 @@
 package figures;
-
+import java.awt.*;
 
 public abstract class Figure2d extends Figure {
     public int w, h;
@@ -32,4 +32,11 @@ public abstract class Figure2d extends Figure {
 
 
     }
+
+    public void focus(Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(new Color(255, 0, 0));
+        g2d.drawRect(this.x-2, this.y-2, this.w+4, this.h+4);
+    }
+
 }

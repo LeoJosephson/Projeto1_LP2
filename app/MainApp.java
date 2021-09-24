@@ -18,6 +18,8 @@ class MainApp {
 class ListFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
     Random rand = new Random();
+    
+    Figure focus = null;
 
     ListFrame () {
         this.addWindowListener (
@@ -33,16 +35,23 @@ class ListFrame extends JFrame {
                 public void keyPressed (KeyEvent evt) {
                 Dimension size = getContentPane().getSize();
                 int rgb_max = 255;
+                int x, y;
+                Point p_mouse = MouseInfo.getPointerInfo().getLocation();
                 
-                int x = rand.nextInt(size.width);
-                int y = rand.nextInt(size.height);
+                if (p_mouse.x <= size.width && p_mouse.y <= size.height){
+                    x = p_mouse.x;
+                    y = p_mouse.y;
+                } else{
+                    x = rand.nextInt(size.width);
+                    y = rand.nextInt(size.height);
+                }
                 int r = rand.nextInt(rgb_max);
                 int g = rand.nextInt(rgb_max);
                 int b = rand.nextInt(rgb_max);
 
                 if (evt.getKeyChar() == 'r' || evt.getKeyChar() == 'e' || evt.getKeyChar() == 'a'){
-                    int w = 1+ rand.nextInt(50);
-                    int h = 1+ rand.nextInt(50);
+                    int w = 5+ rand.nextInt(50);
+                    int h = 5+ rand.nextInt(50);
                     int fr = rand.nextInt(rgb_max);
                     int fg = rand.nextInt(rgb_max);
                     int fb = rand.nextInt(rgb_max);
@@ -73,7 +82,7 @@ class ListFrame extends JFrame {
                     if (figs.size() > 0){
                         Figure fig = figs.get(figs.size() -1);
                         fig.grow();
-                        figs.set(figs.size() -1, fig);
+
                     }
                 }
                 else if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_UP ) {
@@ -88,41 +97,65 @@ class ListFrame extends JFrame {
                         
                         Figure fig = figs.get(figs.size() -1);
                         fig.mov(dx,dy);
-                        figs.set(figs.size() -1, fig);
+
+
 
                     }
-                }
                 
+                }
                 repaint(); 
+                
+
                 }
                 
             }
         );
+        MouseAdapter m = new MouseAdapter(){
+                Point p1;
+                int i = -1;
 
-        this.addMouseListener(
-            new MouseAdapter(){
+                public void mouseDragged(MouseEvent e){
+                    if (i != -1){
+                        Point pt = e.getPoint();
+                        Figure fig = figs.get(i);
+                        
+                        int dx = ((int)(pt.x - p1.x));
+                        int dy = ((int)(pt.y - p1.y));
+
+                        p1.x = p1.x + dx;
+                        p1.y = p1.y + dy;
+                        fig.mov(dx, dy);
+
+                    }
+
+                repaint();
+
+                }
                 public void mousePressed(MouseEvent e){
+                    p1 = e.getPoint();
                     int x=e.getX();
                     int y=e.getY();
+                    System.out.format("%d, %d\n", x, y);
                     if (figs.size() > 0){
 
-                        int i = last_occurrence(figs, figs.size()-1, x, y);
+                        i = last_occurrence(figs, figs.size()-1, x, y);
 
                         if (i != -1){
                             
                             Figure figure = figs.get(i);
                             figs.remove(i);
                             figs.add(figure);
-                            repaint();
+                            
+
+
                         }
+                        repaint();
                     }
                 }
-            }
-        );
 
-        
-
-        
+            };
+        this.addMouseListener(m);
+        this.addMouseMotionListener(m);
 
         this.setTitle("Lista de Figures");
         this.setSize(350, 350);
@@ -132,15 +165,12 @@ class ListFrame extends JFrame {
         super.paint(g);
         for (Figure fig: this.figs) {
             fig.paint(g);
+            focus = figs.get(figs.size()-1);
+            if (fig == focus){
+                fig.focus(g);
+            }
         }
     }
-
-    /* Método para deletar ultimo objeto
-    public ArrayList<Figure> del (ArrayList<Figure> figs){
-        figs.remove(figs.size()-1);
-        return figs;
-    }
-    */
 
     public int last_occurrence(ArrayList<Figure> figs, int length, int x, int y){
 

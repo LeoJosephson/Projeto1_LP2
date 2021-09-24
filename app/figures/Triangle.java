@@ -1,7 +1,7 @@
 package figures;
 
 import java.util.Random;
-
+import java.lang.Math.*;
 import java.awt.*;
 
 public class Triangle extends Figure2d {
@@ -33,6 +33,8 @@ public class Triangle extends Figure2d {
     }
 
     public void grow(){
+        this.w += 2;
+        this.h += 1;
         this.coordsx[0] -= 1;
         this.coordsy[1] -= 1;
         this.coordsx[2] += 1;
@@ -43,5 +45,40 @@ public class Triangle extends Figure2d {
             this.coordsx[i] += dx;
             this.coordsy[i] += dy;
         }
+    }
+
+    public int area(int x1, int y1, int x2, int y2, int x3, int y3)
+    {
+        int a = ((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2);
+        return a;
+    }
+    
+
+    public boolean isInside(int x1, int y1, int x2, int y2, int x3, int y3, int x, int y)
+    {  
+
+        float A = area(x1, y1, x2, y2, x3, y3);
+        
+
+        float A1 = area(x, y, x2, y2, x3, y3);
+        
+
+        float A2 = area(x1, y1, x, y, x3, y3);
+
+        float A3 = area(x1, y1, x2, y2, x, y);
+            
+
+        boolean is = (A == A1 + A2 + A3);
+        return is;
+    }
+
+    public boolean clicked(int ex, int ey){
+        return isInside(this.coordsx[0], this.coordsy[0], this.coordsx[1], this.coordsy[1], this.coordsx[2], this.coordsy[2], ex, ey);
+    }
+
+    public void focus(Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(new Color(255, 0, 0));
+        g2d.drawRect(this.coordsx[0]-2, this.coordsy[1]-2, this.w+4, this.h+4);
     }
 }

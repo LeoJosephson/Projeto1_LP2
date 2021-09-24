@@ -7,6 +7,7 @@ public class Line extends Figure {
 
     public Line (int x, int y, int x2, int y2, int r, int g, int b) {
         super(x, y, r, g, b);
+
         this.x2 = x2;
         this.y2 = y2;
         
@@ -25,8 +26,15 @@ public class Line extends Figure {
     }
     
     public void grow(){
-        if (x2 > x) this.x2 += 2;
-        else this.x += 2;
+        if (x2 > x) {
+            this.x2 += 2;
+            this.y2 += 2;
+        }
+        else {
+            this.x += 2;
+            this.y += 2;
+        }
+
             
     }
 
@@ -38,7 +46,18 @@ public class Line extends Figure {
     }
 
     public boolean clicked(int ex, int ey){
-        return true;
+        return click(this.x, this.y, this.x2, this.y2, ex, ey);
 
+    }
+
+    public boolean click(int x1, int x2, int y1, int y2, int ex, int ey){
+        return false;
+    }
+
+
+    public void focus(Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(new Color(255, 0, 0));
+        g2d.drawLine(this.x, this.y, this.x2, this.y2);
     }
 }
