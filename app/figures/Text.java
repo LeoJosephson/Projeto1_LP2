@@ -11,7 +11,7 @@ public class Text extends Figure {
     String family;
     int type;
     int size;
-    Font font;
+
     Random rand = new Random();
     
     public Text (int x, int y, int r, int g, int b, String text, int size) {
@@ -32,10 +32,10 @@ public class Text extends Figure {
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        this.font =  new Font(family, type, size);
-        g2d.setFont(this.font);
+        Font font =  new Font(family, type, size);
+        g2d.setFont(font);
 
-        FontMetrics fm = g.getFontMetrics(this.font);
+        FontMetrics fm = g.getFontMetrics(font);
         
         this.w = fm.stringWidth(this.text);
         this.h = fm.getAscent();
