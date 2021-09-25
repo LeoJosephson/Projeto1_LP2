@@ -34,12 +34,21 @@ public class Triangle extends Figure2d {
         g2d.drawPolygon(triangle);    
     }
 
-    public void grow(){
+    public void resize(int d){
+        if (d<0 && this.w >= 7 && this.h >= 7){
+            this.w += 2 * d;
+            this.h += d;
+            this.coordsx[0] += -d;
+            this.coordsy[1] += -d;
+            this.coordsx[2] += d;
+        }
+        else if (d>0){
         this.w += 2;
         this.h += 1;
         this.coordsx[0] -= 1;
         this.coordsy[1] -= 1;
         this.coordsx[2] += 1;
+    }
     }
 
     public void mov(int dx, int dy){

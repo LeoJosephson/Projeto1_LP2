@@ -73,11 +73,11 @@ class ListFrame extends JFrame {
                 else if (evt.getKeyChar() == KeyEvent.VK_DELETE){
                     if (figs.size() > 0) figs.remove(figs.size()-1);
                 }
-                else if (evt.getKeyChar() == 'g' || evt.getKeyChar() == 'p'){
+                else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
                     if (figs.size() > 0){
                         Figure fig = figs.get(figs.size() -1);
-                        if (evt.getKeyChar() == 'g') fig.grow(2);
-                        else fig.grow(-1);
+                        if (evt.getKeyChar() == '+') fig.resize(2);
+                        else fig.resize(-1);
 
                     }
                 }

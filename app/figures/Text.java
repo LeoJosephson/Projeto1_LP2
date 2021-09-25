@@ -55,8 +55,9 @@ public class Text extends Figure {
         return rand.nextInt(3);
     }
 
-    public void grow(){
-        this.size += 2;
+    public void resize(int d){
+        if (this.size >= 8 && d<0) this.size += d;
+        else if (d > 0) this.size += d;
     }
 
     public void mov(int dx, int dy){
