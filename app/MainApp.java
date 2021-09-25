@@ -35,83 +35,73 @@ class ListFrame extends JFrame {
         this.addKeyListener (
             new KeyAdapter() {
                 public void keyPressed (KeyEvent evt) {
-                Dimension size = getContentPane().getSize();
-                int rgb_max = 255;
-                int x, y;
-                Point p_mouse = MouseInfo.getPointerInfo().getLocation();
-                
-                if (p_mouse.x <= size.width && p_mouse.y <= size.height){
-                    x = p_mouse.x;
-                    y = p_mouse.y;
-                } else{
-                    x = rand.nextInt(size.width);
-                    y = rand.nextInt(size.height);
-                }
-                int r = rand.nextInt(rgb_max);
-                int g = rand.nextInt(rgb_max);
-                int b = rand.nextInt(rgb_max);
-
-                if (evt.getKeyChar() == 'r' || evt.getKeyChar() == 'e' || evt.getKeyChar() == 'a'){
-                    int w = 8+ rand.nextInt(50);
-                    int h = 8+ rand.nextInt(50);
-                    int fr = rand.nextInt(rgb_max);
-                    int fg = rand.nextInt(rgb_max);
-                    int fb = rand.nextInt(rgb_max);
+                    Dimension size = getContentPane().getSize();
+                    int rgb_max = 255;
+                    int x, y;
+                    Point p_mouse = MouseInfo.getPointerInfo().getLocation();
                     
-                    if (evt.getKeyChar() == 'r') {
-                        figs.add(new Rect(x,y, w,h, r, g, b, fr, fg, fb));
-                    } 
-                    else if (evt.getKeyChar() == 'e'){
-                        figs.add(new Ellipse(x,y, w,h, r, g, b, fr, fg, fb));
+                    if (p_mouse.x <= size.width && p_mouse.y <= size.height){
+                        x = p_mouse.x;
+                        y = p_mouse.y;
+                    } else{
+                        x = rand.nextInt(size.width);
+                        y = rand.nextInt(size.height);
                     }
-                    else if (evt.getKeyChar() == 'a'){
-                        figs.add(new Triangle(x,y, w,h, r, g, b, fr, fg, fb));
-                    }
-                }
-                else if (evt.getKeyChar() == 't'){
-                    int sizeof = 8 + rand.nextInt(66);
-                    figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof));
-                }
-                else if (evt.getKeyChar() == KeyEvent.VK_DELETE){
-                    if (figs.size() > 0) {
-                        removed = figs.get(figs.size() - 1);
-                        figs.remove(figs.size()-1);
-                    }
-                } else if (evt.getKeyChar() == 'z'){
-                    if (removed != null){
-                        figs.add(removed);
-                        removed = null;
-                    }
-                }
-                else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
-                    if (figs.size() > 0){
-                        Figure fig = figs.get(figs.size() -1);
-                        if (evt.getKeyChar() == '+') fig.resize(2);
-                        else fig.resize(-1);
+                    int r = rand.nextInt(rgb_max);
+                    int g = rand.nextInt(rgb_max);
+                    int b = rand.nextInt(rgb_max);
 
-                    }
-                }
-                else if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_UP ) {
-                    if (figs.size() > 0){
-                        int dx = 0;
-                        int dy = 0;
-                        if(evt.getKeyCode() == KeyEvent.VK_DOWN) dy = 2;
-                        else if (evt.getKeyCode() == KeyEvent.VK_UP){ dy = -2;}
-                        else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) dx = 2;
-                        else if (evt.getKeyCode() == KeyEvent.VK_LEFT) dx = -2;
-                            
+                    if (evt.getKeyChar() == 'r' || evt.getKeyChar() == 'e' || evt.getKeyChar() == 'a'){
+                        int w = 8+ rand.nextInt(50);
+                        int h = 8+ rand.nextInt(50);
+                        int fr = rand.nextInt(rgb_max);
+                        int fg = rand.nextInt(rgb_max);
+                        int fb = rand.nextInt(rgb_max);
                         
-                        Figure fig = figs.get(figs.size() -1);
-                        fig.mov(dx,dy);
-
-
-
+                        if (evt.getKeyChar() == 'r') {
+                            figs.add(new Rect(x,y, w,h, r, g, b, fr, fg, fb));
+                        } 
+                        else if (evt.getKeyChar() == 'e'){
+                            figs.add(new Ellipse(x,y, w,h, r, g, b, fr, fg, fb));
+                        }
+                        else if (evt.getKeyChar() == 'a'){
+                            figs.add(new Triangle(x,y, w,h, r, g, b, fr, fg, fb));
+                        }
                     }
-                
-                }
-                repaint(); 
-                
-
+                    else if (evt.getKeyChar() == 't'){
+                        int sizeof = 8 + rand.nextInt(66);
+                        figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof));
+                    }else if (evt.getKeyChar() == 'z'){
+                        if (removed != null){
+                            figs.add(removed);
+                            removed = null;
+                        }
+                    }
+                    else if (focus != null){
+                        if (evt.getKeyChar() == KeyEvent.VK_DELETE){
+                            removed = figs.get(figs.size() - 1);
+                            figs.remove(figs.size()-1);     
+                        }
+                        else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
+                                if (evt.getKeyChar() == '+') focus.resize(2);
+                                else focus.resize(-1);
+                        }
+                        else if (evt.getKeyChar() == 'c'){
+                            focus.change_color();
+                        }
+                        else if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_UP ) {
+                            int dx = 0;
+                            int dy = 0;
+                            if(evt.getKeyCode() == KeyEvent.VK_DOWN) dy = 2;
+                            else if (evt.getKeyCode() == KeyEvent.VK_UP){ dy = -2;}
+                            else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) dx = 2;
+                            else if (evt.getKeyCode() == KeyEvent.VK_LEFT) dx = -2;
+                                                
+                            Figure fig = figs.get(figs.size() -1);
+                            focus.mov(dx,dy);
+                        }
+                    }
+                    repaint(); 
                 }
                 
             }
