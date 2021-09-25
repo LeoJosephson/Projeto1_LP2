@@ -1,5 +1,6 @@
 package figures;
 import java.util.Random;
+
 import java.awt.*;
 import java.util.List;
 import java.util.Locale;
@@ -77,5 +78,13 @@ public class Text extends Figure {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
         g2d.drawRect(this.x-2, y1-2, this.w+4, this.h+4);
+    }
+
+    public void change_color(){
+    int rgb_max = 255;
+    this.r = rand.nextInt(rgb_max);
+    this.g = rand.nextInt(rgb_max);
+    this.b = rand.nextInt(rgb_max);
+
     }
 }

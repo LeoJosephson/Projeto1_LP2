@@ -17,8 +17,7 @@ public abstract class Figure {
     public abstract void paint (Graphics g);
     public abstract void resize (int d);
     public abstract void mov (int dx, int dy);
-
     public abstract boolean clicked(int ex, int ey);
-
     public abstract void focus(Graphics g);
+    public abstract void change_color();
 }

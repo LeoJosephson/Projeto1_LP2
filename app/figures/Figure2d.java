@@ -1,7 +1,10 @@
 package figures;
 import java.awt.*;
+import java.util.Random;
+
 
 public abstract class Figure2d extends Figure {
+    Random rand = new Random();
     public int w, h;
     public int fr, fg, fb;
     public Figure2d (int x, int y, int w, int h, int r, int g, int b, int fr, int fg, int fb) {
@@ -43,6 +46,16 @@ public abstract class Figure2d extends Figure {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
         g2d.drawRect(this.x-2, this.y-2, this.w+4, this.h+4);
+    }
+
+    public void change_color(){
+        int rgb_max = 255;
+        this.r = rand.nextInt(rgb_max);
+        this.g = rand.nextInt(rgb_max);
+        this.b = rand.nextInt(rgb_max);
+        this.fr = rand.nextInt(rgb_max);
+        this.fg = rand.nextInt(rgb_max);
+        this.fb = rand.nextInt(rgb_max);
     }
 
 }
