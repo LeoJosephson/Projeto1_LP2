@@ -6,14 +6,13 @@
  Features:
  
  -> Create shapes:
-  * Rect (press r)
-  * Ellipse (press e)
-  * Text (press t)
-  * Line (press l)
+  * Rect     (press r)
+  * Ellipse  (press e)
+  * Text     (press t)
   * Triangle (press a)
   
 -> Others:
-* Delete object (press del)
-* Grow object (press g)
-* Move object (⬅, ➡, ⬆, ⬇)
-* Select object (right/left click)
+* Delete object: (press del)
+* Resize object: (press + to grow or - to shrink)
+* Move object:   (⬅, ➡, ⬆, ⬇) or drag with mouse
+* Select object: (right/left click)
