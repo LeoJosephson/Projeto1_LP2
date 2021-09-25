@@ -20,6 +20,8 @@ class ListFrame extends JFrame {
     Random rand = new Random();
     
     Figure focus = null;
+    Figure removed = null;
+
 
     ListFrame () {
         this.addWindowListener (
@@ -71,7 +73,15 @@ class ListFrame extends JFrame {
                     figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof));
                 }
                 else if (evt.getKeyChar() == KeyEvent.VK_DELETE){
-                    if (figs.size() > 0) figs.remove(figs.size()-1);
+                    if (figs.size() > 0) {
+                        removed = figs.get(figs.size() - 1);
+                        figs.remove(figs.size()-1);
+                    }
+                } else if (evt.getKeyChar() == 'z'){
+                    if (removed != null){
+                        figs.add(removed);
+                        removed = null;
+                    }
                 }
                 else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
                     if (figs.size() > 0){
