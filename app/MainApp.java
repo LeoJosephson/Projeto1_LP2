@@ -50,8 +50,8 @@ class ListFrame extends JFrame {
                 int b = rand.nextInt(rgb_max);
 
                 if (evt.getKeyChar() == 'r' || evt.getKeyChar() == 'e' || evt.getKeyChar() == 'a'){
-                    int w = 5+ rand.nextInt(50);
-                    int h = 5+ rand.nextInt(50);
+                    int w = 8+ rand.nextInt(50);
+                    int h = 8+ rand.nextInt(50);
                     int fr = rand.nextInt(rgb_max);
                     int fg = rand.nextInt(rgb_max);
                     int fb = rand.nextInt(rgb_max);
@@ -67,21 +67,17 @@ class ListFrame extends JFrame {
                     }
                 }
                 else if (evt.getKeyChar() == 't'){
-                    int sizeof = rand.nextInt(64);
+                    int sizeof = 8 + rand.nextInt(66);
                     figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof));
-                }
-                else if (evt.getKeyChar() == 'l'){
-                    int x2 = rand.nextInt(size.width);
-                    int y2 = rand.nextInt(size.height);
-                    figs.add(new Line(x,y, x2, y2, r, g, b));
                 }
                 else if (evt.getKeyChar() == KeyEvent.VK_DELETE){
                     if (figs.size() > 0) figs.remove(figs.size()-1);
                 }
-                else if (evt.getKeyChar() == 'g'){
+                else if (evt.getKeyChar() == 'g' || evt.getKeyChar() == 'p'){
                     if (figs.size() > 0){
                         Figure fig = figs.get(figs.size() -1);
-                        fig.grow();
+                        if (evt.getKeyChar() == 'g') fig.grow(2);
+                        else fig.grow(-1);
 
                     }
                 }
@@ -133,12 +129,10 @@ class ListFrame extends JFrame {
                 }
                 public void mousePressed(MouseEvent e){
                     p1 = e.getPoint();
-                    int x=e.getX();
-                    int y=e.getY();
-                    System.out.format("%d, %d\n", x, y);
+
                     if (figs.size() > 0){
 
-                        i = last_occurrence(figs, figs.size()-1, x, y);
+                        i = last_occurrence(figs, figs.size()-1, p1.x, p1.y);
 
                         if (i != -1){
                             
