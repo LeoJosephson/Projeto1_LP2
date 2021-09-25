@@ -10,10 +10,13 @@
   * Ellipse  (press e)
   * Text     (press t)
   * Triangle (press a)
-  
+
 -> Others:
-* Delete object: (press del) 
-* Redo last delete (press z)
-* Resize object: (press + to grow or - to shrink)
-* Move object:   (⬅, ➡, ⬆, ⬇) or drag with mouse
+* Everytime that a object is created, that object becomes the focused object
 * Select object: (right/left click)
+* Delete focused object: (press del) 
+* Redo last delete (press z)
+* Randomly change the color of focused object (press c)
+* Resize focused object: (press + to grow or - to shrink)
+* Move focused object:   (⬅, ➡, ⬆, ⬇) or drag with mouse
+
