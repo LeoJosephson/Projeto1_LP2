@@ -81,7 +81,7 @@ class ListFrame extends JFrame {
                 else if (evt.getKeyChar() == 'g'){
                     if (figs.size() > 0){
                         Figure fig = figs.get(figs.size() -1);
-                        fig.grow(2);
+                        fig.grow();
 
                     }
                 }
