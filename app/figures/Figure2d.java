@@ -13,7 +13,7 @@ public abstract class Figure2d extends Figure {
         this.fb = fb;
     }
 
-    public void grow(int d){
+    public void resize(int d){
         if (d<0 && this.w >= 8 && this.h >= 8){
             this.w += d;
             this.h += d;
@@ -24,7 +24,7 @@ public abstract class Figure2d extends Figure {
         }
     }
 
-    public void resize (int dx, int dy){
+    public void mov (int dx, int dy){
 
         this.x += dx;
         this.y += dy;
