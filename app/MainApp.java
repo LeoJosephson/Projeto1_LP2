@@ -79,8 +79,8 @@ class ListFrame extends JFrame {
                     }
                     else if (focus != null){
                         if (evt.getKeyChar() == KeyEvent.VK_DELETE){
-                            removed = figs.get(figs.size() - 1);
-                            figs.remove(figs.size()-1);     
+                            removed = focus;
+                            figs.remove(focus);     
                         }
                         else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
                                 if (evt.getKeyChar() == '+') focus.resize(2);
@@ -97,7 +97,6 @@ class ListFrame extends JFrame {
                             else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) dx = 2;
                             else if (evt.getKeyCode() == KeyEvent.VK_LEFT) dx = -2;
                                                 
-                            Figure fig = figs.get(figs.size() -1);
                             focus.mov(dx,dy);
                         }
                     }
@@ -107,52 +106,44 @@ class ListFrame extends JFrame {
             }
         );
         MouseAdapter m = new MouseAdapter(){
-                Point p1;
-                int i = -1;
+            Point p1;
+            int i = -1;
 
-                public void mouseDragged(MouseEvent e){
+            public void mouseDragged(MouseEvent e){
+                if (i != -1){
+                    Point pt = e.getPoint();
+                    
+                    int dx = ((int)(pt.x - p1.x));
+                    int dy = ((int)(pt.y - p1.y));
+
+                    p1.x = p1.x + dx;
+                    p1.y = p1.y + dy;
+                    focus.mov(dx, dy);
+
+                }
+            repaint();
+            }
+            public void mousePressed(MouseEvent e){
+                p1 = e.getPoint();
+
+                if (figs.size() > 0){
+                    i = last_occurrence(figs, figs.size()-1, p1.x, p1.y);
+
                     if (i != -1){
-                        Point pt = e.getPoint();
-                        Figure fig = figs.get(i);
-                        
-                        int dx = ((int)(pt.x - p1.x));
-                        int dy = ((int)(pt.y - p1.y));
-
-                        p1.x = p1.x + dx;
-                        p1.y = p1.y + dy;
-                        fig.mov(dx, dy);
-
-                    }
-
-                repaint();
-
+                        Figure figure = figs.get(i);
+                        figs.remove(i);
+                        figs.add(figure);
+                    }   
                 }
-                public void mousePressed(MouseEvent e){
-                    p1 = e.getPoint();
-
-                    if (figs.size() > 0){
-
-                        i = last_occurrence(figs, figs.size()-1, p1.x, p1.y);
-
-                        if (i != -1){
-                            
-                            Figure figure = figs.get(i);
-                            figs.remove(i);
-                            figs.add(figure);
-                            
-
-
-                        }
-                        repaint();
-                    }
-                }
-
-            };
+            repaint();
+            }
+                
+        };
         this.addMouseListener(m);
         this.addMouseMotionListener(m);
 
-        this.setTitle("Lista de Figures");
-        this.setSize(350, 350);
+        this.setTitle("Trabalho de LP2");
+        this.setSize(450, 450);
     }
 
     public void paint (Graphics g) {
