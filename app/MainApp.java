@@ -69,7 +69,7 @@ class ListFrame extends JFrame {
                         }
                     }
                     else if (evt.getKeyChar() == 't'){
-                        int sizeof = 8 + rand.nextInt(66);
+                        int sizeof = 8 + rand.nextInt(32);
                         figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof));
                     }else if (evt.getKeyChar() == 'z'){
                         if (removed != null){
