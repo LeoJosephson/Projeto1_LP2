@@ -38,15 +38,14 @@ class ListFrame extends JFrame {
                     Dimension size = getContentPane().getSize();
                     int rgb_max = 255;
                     int x, y;
+                    Point p = getLocationOnScreen();
                     Point p_mouse = MouseInfo.getPointerInfo().getLocation();
+                    int p_atual_x = p_mouse.x - p.x;
+                    int p_atual_y = p_mouse.y - p.y; 
+
+                    x = p_atual_x;
+                    y = p_atual_y;
                     
-                    if (p_mouse.x <= size.width && p_mouse.y <= size.height){
-                        x = p_mouse.x;
-                        y = p_mouse.y;
-                    } else{
-                        x = rand.nextInt(size.width);
-                        y = rand.nextInt(size.height);
-                    }
                     int r = rand.nextInt(rgb_max);
                     int g = rand.nextInt(rgb_max);
                     int b = rand.nextInt(rgb_max);
