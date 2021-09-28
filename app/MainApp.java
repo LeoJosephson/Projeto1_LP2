@@ -37,14 +37,12 @@ class ListFrame extends JFrame {
                 public void keyPressed (KeyEvent evt) {
                     Dimension size = getContentPane().getSize();
                     int rgb_max = 255;
-                    int x, y;
+
                     Point p = getLocationOnScreen();
                     Point p_mouse = MouseInfo.getPointerInfo().getLocation();
-                    int p_atual_x = p_mouse.x - p.x;
-                    int p_atual_y = p_mouse.y - p.y; 
+                    int x = p_mouse.x - p.x;
+                    int y = p_mouse.y - p.y; 
 
-                    x = p_atual_x;
-                    y = p_atual_y;
                     
                     int r = rand.nextInt(rgb_max);
                     int g = rand.nextInt(rgb_max);
