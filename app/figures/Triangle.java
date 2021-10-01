@@ -31,23 +31,27 @@ public class Triangle extends Figure2d {
         g2d.fillPolygon(this.coordsx, this.coordsy, 3);
         g2d.setColor(new Color(this.r, this.g, this.b));
         this.triangle = new Polygon(this.coordsx, this.coordsy, 3);
-        g2d.drawPolygon(triangle);    
+        g2d.drawPolygon(triangle);
     }
 
     public void resize(int d){
-        if (d<0 && this.w >= 7 && this.h >= 7){
+        if (d<0 && this.w > 8 && this.h > 8){
             this.w += 2 * d;
             this.h += d;
             this.coordsx[0] += -d;
             this.coordsy[1] += -d;
             this.coordsx[2] += d;
+            int difx0 = this.coordsx[1] - this.coordsx[0];
+            int difx2 = this.coordsx[2] - this.coordsx[1];
+            if (difx0 > difx2) this.coordsx[1] += d;
+            else this.coordsx[1] -= d;
         }
         else if (d>0){
-        this.w += 2;
-        this.h += 1;
-        this.coordsx[0] -= 1;
-        this.coordsy[1] -= 1;
-        this.coordsx[2] += 1;
+        this.w += 2 * d;
+        this.h += d;
+        this.coordsx[0] -= d;
+        this.coordsy[1] -= d;
+        this.coordsx[2] += d;
     }
     }
 

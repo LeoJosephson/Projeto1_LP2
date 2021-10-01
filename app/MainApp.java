@@ -80,7 +80,7 @@ class ListFrame extends JFrame {
                             figs.remove(focus);     
                         }
                         else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
-                                if (evt.getKeyChar() == '+') focus.resize(2);
+                                if (evt.getKeyChar() == '+') focus.resize(1);
                                 else focus.resize(-1);
                         }
                         else if (evt.getKeyChar() == 'c'){
