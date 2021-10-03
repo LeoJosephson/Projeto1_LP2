@@ -18,7 +18,7 @@ public class Triangle extends Figure2d {
         this.coordsx[2] = this.x+this.w;
         this.coordsy[2] = this.y;
     }
-
+    
 
     public void print () {
         System.out.format("Triangulo de tamanho (%d,%d)(largura, altura) na posicao (%d,%d).\n",
@@ -43,16 +43,18 @@ public class Triangle extends Figure2d {
             this.coordsx[2] += d;
             int difx0 = this.coordsx[1] - this.coordsx[0];
             int difx2 = this.coordsx[2] - this.coordsx[1];
-            if (difx0 > difx2) this.coordsx[1] += d;
-            else this.coordsx[1] -= d;
+            if (this.coordsx[1] == this.coordsx[0] || this.coordsx[1] == this.coordsx[2]){
+                if (difx0 > difx2) this.coordsx[1] += d;
+                else this.coordsx[1] -= d;
+            }
         }
         else if (d>0){
-        this.w += 2 * d;
-        this.h += d;
-        this.coordsx[0] -= d;
-        this.coordsy[1] -= d;
-        this.coordsx[2] += d;
-    }
+            this.w += 2 * d;
+            this.h += d;
+            this.coordsx[0] -= d;
+            this.coordsy[1] -= d;
+            this.coordsx[2] += d;
+        }
     }
 
     public void mov(int dx, int dy){

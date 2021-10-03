@@ -22,7 +22,6 @@ class ListFrame extends JFrame {
     Figure focus = null;
     Figure removed = null;
 
-
     ListFrame () {
         this.addWindowListener (
             new WindowAdapter() {
@@ -99,7 +98,6 @@ class ListFrame extends JFrame {
                     }
                     repaint(); 
                 }
-                
             }
         );
         MouseAdapter m = new MouseAdapter(){
@@ -116,7 +114,6 @@ class ListFrame extends JFrame {
                     p1.x = p1.x + dx;
                     p1.y = p1.y + dy;
                     focus.mov(dx, dy);
-
                 }
             repaint();
             }
@@ -154,7 +151,7 @@ class ListFrame extends JFrame {
         }
     }
 
-    public int last_occurrence(ArrayList<Figure> figs, int length, int x, int y){
+    private int last_occurrence(ArrayList<Figure> figs, int length, int x, int y){
 
         if (length == -1){ 
             return -1;
