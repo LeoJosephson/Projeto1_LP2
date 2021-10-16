@@ -1,8 +1,9 @@
 package figures;
 
 import java.awt.Graphics;
+import ivisible.IVisible;
 
-public abstract class Figure {
+public abstract class Figure implements IVisible {
     public int x, y;
     public int r,g,b; 
 
