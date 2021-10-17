@@ -23,7 +23,7 @@ Recursos:
 * Mover objeto em foco (⬅, ➡, ⬆, ⬇ ou arrastar o objeto com o mouse)
 
 
-->**Quando a janela do aplicativo for fechada, os objetos serão salvos**
+->**Quando a janela do aplicativo for fechada, os objetos serão salvos em um arquivo binário.**
  
 <hr>
 (en en)
@@ -47,4 +47,4 @@ Recursos:
 * Resize focused object (press + to grow or - to shrink)
 * Move focused object   (⬅, ➡, ⬆, ⬇ or drag with mouse)
 
-->**After closing the app window, the objects will be saved.**
+->**After closing the app window, the objects will be saved in a binary file.**
