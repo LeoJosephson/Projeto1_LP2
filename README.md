@@ -1,4 +1,4 @@
-# Projeto_LP2
+# Projeto LP2
  Final Project for LP2
  
  (pt-br)
@@ -23,8 +23,9 @@ Recursos:
 * Mover objeto em foco (⬅, ➡, ⬆, ⬇ ou arrastar o objeto com o mouse)
 
 
-**Quando a janela do aplicativo for fechada, os objetos serão salvos**
+->**Quando a janela do aplicativo for fechada, os objetos serão salvos**
  
+<hr>
 (en en)
 
 **In this project I will be developing an diagram software using java**
@@ -46,4 +47,4 @@ Recursos:
 * Resize focused object (press + to grow or - to shrink)
 * Move focused object   (⬅, ➡, ⬆, ⬇ or drag with mouse)
 
-**After closing the app window, the objects will be saved.**
+->**After closing the app window, the objects will be saved.**
