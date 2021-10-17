@@ -1,4 +1,4 @@
-# Projeto1_LP2
+# Projeto_LP2
  Final Project for LP2
  
  (pt-br)
@@ -21,6 +21,9 @@ Recursos:
 * Muda a cor do objeto em foco aleatoriamente (pressione c)
 * Redimensionar objeto em foco (pressione + para aumentar ou - para diminuir)
 * Mover objeto em foco (⬅, ➡, ⬆, ⬇ ou arrastar o objeto com o mouse)
+
+
+**Quando a janela do aplicativo for fechada, os objetos serão salvos**
  
 (en en)
 
@@ -42,3 +45,5 @@ Recursos:
 * Randomly change the color of focused object (press c)
 * Resize focused object (press + to grow or - to shrink)
 * Move focused object   (⬅, ➡, ⬆, ⬇ or drag with mouse)
+
+**After closing the app window, the objects will be saved.**
