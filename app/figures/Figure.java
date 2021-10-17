@@ -2,8 +2,9 @@ package figures;
 
 import java.awt.Graphics;
 import ivisible.IVisible;
+import java.io.Serializable;
 
-public abstract class Figure implements IVisible {
+public abstract class Figure implements IVisible, Serializable {
     public int x, y;
     public int r,g,b; 
 
