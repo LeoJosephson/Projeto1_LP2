@@ -16,7 +16,7 @@ public abstract class Figure implements IVisible, Serializable {
         this.b = b;
     }
     
-    public abstract void paint (Graphics g);
+    public abstract void paint (Graphics g, boolean focused);
     public abstract void resize (int d);
     public abstract void mov (int dx, int dy);
     public abstract boolean clicked(int ex, int ey);

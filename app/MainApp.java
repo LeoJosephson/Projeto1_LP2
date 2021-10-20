@@ -159,11 +159,9 @@ class ListFrame extends JFrame {
     public void paint (Graphics g) {
         super.paint(g);
         for (Figure fig: this.figs) {
-            fig.paint(g);
             focus = figs.get(figs.size()-1);
-            if (fig == focus){
-                fig.focus(g);
-            }
+            if (fig == focus) fig.paint(g, true);
+            else fig.paint(g, false);
         }
     }
 

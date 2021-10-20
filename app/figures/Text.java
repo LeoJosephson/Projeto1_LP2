@@ -31,7 +31,7 @@ public class Text extends Figure {
             this.x, this.y, this.text);
     }
 
-    public void paint (Graphics g) {
+    public void paint (Graphics g, boolean focused) {
         Graphics2D g2d = (Graphics2D) g;
         Font font =  new Font(family, type, size);
         g2d.setFont(font);
@@ -40,6 +40,10 @@ public class Text extends Figure {
         
         this.w = fm.stringWidth(this.text);
         this.h = fm.getAscent();
+
+        if (focused){
+            focus(g);
+        }
 
         g2d.setColor(new Color(this.r, this.g, this.b));
         g2d.drawString(this.text, this.x, this.y);
