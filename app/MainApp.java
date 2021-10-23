@@ -6,6 +6,7 @@ import java.util.Random;
 import java.io.*;
 
 import figures.*;
+import button.*;
 
 class MainApp {
     public static void main (String[] args) {
@@ -17,8 +18,10 @@ class MainApp {
 
 class ListFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
+    ArrayList<button.Button> btns = new ArrayList<button.Button>();
     Random rand = new Random();
     
+    button.Button focus_btn = null;
     Figure focus = null;
     Figure removed = null;
 
@@ -45,7 +48,26 @@ class ListFrame extends JFrame {
                     System.exit(0);
                 }
             }
+        
+
         );
+
+        // Criando os buttons
+        int xb = 20;
+        int yb;
+        int wb = 40;
+        int hb = 40;
+        int indice = 1;
+        Figure btnf;
+        for (yb = 27; yb<=147; yb = yb + 40){
+
+            if (yb==27) btnf = new Rect(xb,yb+10, wb,hb, 0, 0, 0, 255, 255, 255);
+            else if (yb==67) btnf = new Ellipse(xb,yb+25, wb,hb, 0, 0, 0, 255, 255, 255);
+            else if (yb==107) btnf = new Text(xb,yb+65, 255, 255, 255, "TEXT", 16, false);
+            else btnf = new Triangle(xb,yb+95, wb-3,hb-3, 0, 0, 0, 255, 255, 255);
+            btns.add(new button.Button(xb, yb+((yb/5)*2),wb, hb, indice, btnf));
+            indice += 1;
+        }
 
         this.addKeyListener (
             new KeyAdapter() {
@@ -79,15 +101,18 @@ class ListFrame extends JFrame {
                         else if (evt.getKeyChar() == 'a'){
                             figs.add(new Triangle(x,y, w,h, r, g, b, fr, fg, fb));
                         }
+                        focus_btn = null;
                     }
                     else if (evt.getKeyChar() == 't'){
                         int sizeof = 8 + rand.nextInt(32);
-                        figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof));
+                        figs.add(new Text(x,y, r, g, b, "Hello World!", sizeof, true));
+                        focus_btn = null;
                     }else if (evt.getKeyChar() == 'z'){
                         if (removed != null){
                             figs.add(removed);
                             removed = null;
                         }
+                        focus_btn = null;
                     }
                     else if (focus != null){
                         if (evt.getKeyChar() == KeyEvent.VK_DELETE){
@@ -135,18 +160,37 @@ class ListFrame extends JFrame {
             }
             public void mousePressed(MouseEvent e){
                 p1 = e.getPoint();
+                i = last_occurrence(figs, figs.size()-1, p1.x, p1.y);
 
-                if (figs.size() > 0){
-                    i = last_occurrence(figs, figs.size()-1, p1.x, p1.y);
-
-                    if (i != -1){
-                        Figure figure = figs.get(i);
-                        figs.remove(i);
-                        figs.add(figure);
-                    }   
+                boolean new_btn_focus = false;
+                if (i != -1){
+                    Figure figure = figs.get(i);
+                    figs.remove(i);
+                    figs.add(figure);
+                    focus_btn = null;
+                } else {
+                    for (button.Button btn: btns){
+                        if (btn.clicked(p1.x, p1.y)){
+                            focus_btn = btn;
+                            focus = null;
+                            new_btn_focus = true;
+                        }
+                    }
                 }
-            repaint();
+
+                if(focus_btn !=  null){
+                    if (i == -1 && new_btn_focus == false){
+                        Figure f = focus_btn.create_figure(p1.x, p1.y);
+                        figs.add(f);
+                        focus_btn = null;
+                    }
+                }  
+                
+
+                repaint();
             }
+                
+            
                 
         };
         this.addMouseListener(m);
@@ -158,9 +202,13 @@ class ListFrame extends JFrame {
 
     public void paint (Graphics g) {
         super.paint(g);
+        for (button.Button btn: this.btns){
+            if (btn == focus_btn) btn.paint(g,true);
+            else btn.paint(g, false);
+        }
         for (Figure fig: this.figs) {
             focus = figs.get(figs.size()-1);
-            if (fig == focus) fig.paint(g, true);
+            if (fig == this.focus && focus_btn == null) fig.paint(g, true);
             else fig.paint(g, false);
         }
     }
