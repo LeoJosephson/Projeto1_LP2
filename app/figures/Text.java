@@ -12,16 +12,24 @@ public class Text extends Figure {
     String family;
     int type;
     int size;
+    boolean random;
 
     Random rand = new Random();
     
-    public Text (int x, int y, int r, int g, int b, String text, int size) {
+    public Text (int x, int y, int r, int g, int b, String text, int size, boolean random) {
         super(x, y, r, g, b);
 
         this.text = text;
         this.size = size;
-        this.type = PickRandomType();
-        this.family = PickRandomFontFamily();
+        this.random = random;
+        if (random == false){
+            this.type = 1;
+            this.family = "Times New Roman";
+        } else{
+            this.type = PickRandomType();
+            this.family = PickRandomFontFamily();
+        }
+        
 
 
     }
@@ -52,7 +60,8 @@ public class Text extends Figure {
     private String PickRandomFontFamily() {
         Locale local_br = new Locale("pt", "BR");
         String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames(local_br);
-        return fonts[rand.nextInt(fonts.length)];
+
+        return fonts[rand.nextInt(24)];
     }
 
     private int PickRandomType(){
