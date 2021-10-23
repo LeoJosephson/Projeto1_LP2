@@ -119,22 +119,26 @@ class ListFrame extends JFrame {
                             removed = focus;
                             figs.remove(focus);     
                         }
-                        else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
-                                if (evt.getKeyChar() == '+') focus.resize(1);
-                                else focus.resize(-1);
-                        }
-                        else if (evt.getKeyChar() == 'c'){
-                            focus.change_color();
-                        }
-                        else if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_UP ) {
-                            int dx = 0;
-                            int dy = 0;
-                            if(evt.getKeyCode() == KeyEvent.VK_DOWN) dy = 2;
-                            else if (evt.getKeyCode() == KeyEvent.VK_UP){ dy = -2;}
-                            else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) dx = 2;
-                            else if (evt.getKeyCode() == KeyEvent.VK_LEFT) dx = -2;
-                                                
-                            focus.mov(dx,dy);
+                        if (focus_btn == null){
+                            if(evt.getKeyChar() == '+' || evt.getKeyChar() == '-'){
+                                    if (evt.getKeyChar() == '+') focus.resize(1);
+                                    else focus.resize(-1);
+                            }
+                            else if (evt.getKeyChar() == 'c'){
+                                if (focus_btn == null){
+                                    focus.change_color();
+                                }
+                            }
+                            else if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_UP ) {
+                                int dx = 0;
+                                int dy = 0;
+                                if(evt.getKeyCode() == KeyEvent.VK_DOWN) dy = 2;
+                                else if (evt.getKeyCode() == KeyEvent.VK_UP){ dy = -2;}
+                                else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) dx = 2;
+                                else if (evt.getKeyCode() == KeyEvent.VK_LEFT) dx = -2;
+                                                    
+                                focus.mov(dx,dy);
+                            }
                         }
                     }
                     repaint(); 
