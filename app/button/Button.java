@@ -1,5 +1,6 @@
 package button;
 
+import java.util.Random;
 import figures.*;
 import ivisible.IVisible;
 import java.awt.*;
@@ -51,10 +52,19 @@ public class Button implements IVisible{
 
     public Figure create_figure(int x, int y){
         Figure f;
-        if (this.index == 1) return (new Rect(x, y, 20, 20, 176,224,230, 0, 0, 0));
-        else if (this.index == 2) return(new Ellipse(x, y, 20, 20, 176,224,230, 0, 0, 0));
-        else if (this.index == 3) return(new Text(x, y, 176,224,230, "Hello World!", 16, true));
-        else return(new Triangle(x, y, 20, 20, 255, 0, 0, 0, 0, 0));
+        Random rand = new Random();
+        int rgb_max = 255;
+        int r, g, b, fr, fg, fb;
+        r = rand.nextInt(rgb_max);
+        g = rand.nextInt(rgb_max);
+        b = rand.nextInt(rgb_max);
+        fr = rand.nextInt(rgb_max);
+        fg = rand.nextInt(rgb_max);
+        fb = rand.nextInt(rgb_max);
+        if (this.index == 1) return (new Rect(x, y, 20, 20, r,g,b, fr, fg, fb));
+        else if (this.index == 2) return(new Ellipse(x, y, 20, 20, r,g,b, fr, fg, fb));
+        else if (this.index == 3) return(new Text(x, y, r,g,b, "Hello World!", 16, true));
+        else return(new Triangle(x, y, 20, 20, r,g,b, fr, fg, fb));
 
     }
 }
