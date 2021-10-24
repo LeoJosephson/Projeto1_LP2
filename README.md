@@ -12,6 +12,7 @@ Recursos:
   * Ellipse  (pressione e)
   * Texto     (pressione t)
   * Triangulo (pressione a)
+  * Também podem ser criadas através de botões. 
 
 ->Outras:
 * Toda vez que um objeto é criado, ele se torna o objeto em foco
@@ -37,6 +38,7 @@ Recursos:
   * Ellipse  (press e)
   * Text     (press t)
   * Triangle (press a)
+  * Buttons
 
 -> Others:
 * Everytime that a object is created, that object becomes the focused object
@@ -46,5 +48,6 @@ Recursos:
 * Randomly change the color of focused object (press c)
 * Resize focused object (press + to grow or - to shrink)
 * Move focused object   (⬅, ➡, ⬆, ⬇ or drag with mouse)
+
 
 ->**After closing the app window, the objects will be saved in a binary file.**
