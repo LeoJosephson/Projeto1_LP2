@@ -77,6 +77,15 @@ public class Triangle extends Figure2d {
     public void focus(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
-        g2d.drawRect(this.coordsx[0]-2, this.coordsy[1]-2, this.w+4, this.h+4);
+        int[] coordsxf = new int[3];
+        int[] coordsyf = new int[3];
+        coordsxf[0] = this.coordsx[0] -2;
+        coordsxf[1] = this.coordsx[1];
+        coordsxf[2] = this.coordsx[2] +2;
+        coordsyf[0] = this.coordsy[0] +1;
+        coordsyf[1] = this.coordsy[1] -1;
+        coordsyf[2] = this.coordsy[2] +1;
+        Polygon x = new Polygon(coordsxf, coordsyf, 3);
+        g2d.drawPolygon(x);
     }
 }
