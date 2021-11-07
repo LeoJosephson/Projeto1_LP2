@@ -57,16 +57,25 @@ class ListFrame extends JFrame {
         int yb;
         int wb = 40;
         int hb = 40;
-        int indice = 1;
-        Figure btnf;
         for (yb = 27; yb<=147; yb = yb + 40){
+            Figure btnf;
 
-            if (yb==27) btnf = new Rect(xb,yb+10, wb,hb, 0, 0, 0, 255, 255, 255);
-            else if (yb==67) btnf = new Ellipse(xb,yb+25, wb,hb, 0, 0, 0, 255, 255, 255);
-            else if (yb==107) btnf = new Text(xb,yb+65, 255, 255, 255, "TEXT", 16, false);
-            else btnf = new Triangle(xb,yb+95, wb-3,hb-3, 0, 0, 0, 255, 255, 255);
-            btns.add(new button.Button(xb, yb+((yb/5)*2),wb, hb, indice, btnf));
-            indice += 1;
+            if (yb==27) {
+                btnf = new Rect(xb,yb+10, wb,hb, 0, 0, 0, 255, 255, 255);
+                btns.add(new BtRect(xb, yb+((yb/5)*2),wb, hb, btnf));
+            }
+            else if (yb==67) {
+                btnf = new Ellipse(xb,yb+25, wb,hb, 0, 0, 0, 255, 255, 255);
+                btns.add(new BtEllipse(xb, yb+((yb/5)*2),wb, hb, btnf));
+            }
+            else if (yb==107){ 
+                btnf = new Text(xb,yb+65, 255, 255, 255, "TEXT", 16, false);
+                btns.add(new BtText(xb, yb+((yb/5)*2),wb, hb, btnf));
+            }
+            else if(yb==147){
+                btnf = new Triangle(xb,yb+95, wb-3,hb-3, 0, 0, 0, 255, 255, 255);
+                btns.add(new BtTriangle(xb, yb+((yb/5)*2),wb, hb, btnf));
+            }
         }
 
         this.addKeyListener (
