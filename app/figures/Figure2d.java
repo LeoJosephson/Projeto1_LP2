@@ -5,8 +5,8 @@ import java.util.Random;
 
 public abstract class Figure2d extends Figure {
     Random rand = new Random();
-    int w, h;
-    int fr, fg, fb;
+    protected int w, h;
+    protected int fr, fg, fb;
     
     public Figure2d (int x, int y, int w, int h, int r, int g, int b, int fr, int fg, int fb) {
         super(x, y, r, g, b);
@@ -41,7 +41,7 @@ public abstract class Figure2d extends Figure {
         return false;
     }
 
-    void focus(Graphics g){
+    protected void focus(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
         g2d.drawRect(this.x-2, this.y-2, this.w+4, this.h+4);
