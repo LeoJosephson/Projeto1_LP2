@@ -6,9 +6,9 @@ import ivisible.IVisible;
 import java.awt.*;
 
 public abstract class Button implements IVisible{
-    public Figure fig;
-    public int x, y;
-    public int w, h;
+    Figure fig;
+    int x, y;
+    int w, h;
 
     public Button(int x, int y, int w, int h, Figure fig){
         this.x = x;
@@ -18,7 +18,7 @@ public abstract class Button implements IVisible{
         this.fig = fig;
     }
 
-    public abstract void focus(Graphics g);
+    abstract void focus(Graphics g);
     public abstract Figure create_figure(int x, int y);
     public boolean clicked (int ex, int ey){
         if (ex >= this.x && ex<=this.x + this.w && ey>=this.y && ey<=this.y+this.h){

@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class Triangle extends Figure2d {
     Random rand = new Random();
-    int[] coordsx = new int[3];
-    int[] coordsy = new int[3];
-    Polygon triangle;
+    private int[] coordsx = new int[3];
+    private int[] coordsy = new int[3];
+    private Polygon triangle;
     public Triangle (int x, int y, int w, int h, int r, int g, int b, int fr, int fg, int fb) {
         super(x, y, w, h, r, g, b, fr, fg, fb);
         this.coordsx[0] = this.x;
@@ -74,7 +74,7 @@ public class Triangle extends Figure2d {
         else return false;
     }
 
-    public void focus(Graphics g){
+    void focus(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
         int[] coordsxf = new int[3];

@@ -5,8 +5,8 @@ import ivisible.IVisible;
 import java.io.Serializable;
 
 public abstract class Figure implements IVisible, Serializable {
-    public int x, y;
-    public int r,g,b; 
+    int x, y;
+    int r,g,b; 
 
     public Figure (int x, int y, int r, int g, int b) {
         this.x = x;
@@ -20,6 +20,6 @@ public abstract class Figure implements IVisible, Serializable {
     public abstract void resize (int d);
     public abstract void mov (int dx, int dy);
     public abstract boolean clicked(int ex, int ey);
-    public abstract void focus(Graphics g);
+    abstract void focus(Graphics g);
     public abstract void change_color();
 }

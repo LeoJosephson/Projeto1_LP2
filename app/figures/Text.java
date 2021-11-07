@@ -7,18 +7,16 @@ import java.util.Locale;
 
 
 public class Text extends Figure {
-    int w, h;
-    String text;
-    String family;
-    int type;
-    int size;
-    boolean random;
-
-    Random rand = new Random();
+    private int w, h;
+    private String text;
+    private String family;
+    private int type;
+    private int size;
+    private boolean random;
+    private Random rand = new Random();
     
     public Text (int x, int y, int r, int g, int b, String text, int size, boolean random) {
         super(x, y, r, g, b);
-
         this.text = text;
         this.size = size;
         this.random = random;
@@ -29,9 +27,6 @@ public class Text extends Figure {
             this.type = PickRandomType();
             this.family = PickRandomFontFamily();
         }
-        
-
-
     }
     
     public void print () {
@@ -86,7 +81,7 @@ public class Text extends Figure {
         return false;
     }
 
-    public void focus(Graphics g){
+    void focus(Graphics g){
         int y1 = this.y - this.h;
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
