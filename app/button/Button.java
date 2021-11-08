@@ -18,7 +18,7 @@ public abstract class Button implements IVisible{
         this.fig = fig;
     }
 
-    protected abstract void focus(Graphics g);
+    abstract void focus(Graphics g);
     public abstract Figure create_figure(int x, int y);
     public boolean clicked (int ex, int ey){
         if (ex >= this.x && ex<=this.x + this.w && ey>=this.y && ey<=this.y+this.h){

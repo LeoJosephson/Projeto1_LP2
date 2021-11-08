@@ -81,7 +81,7 @@ public class Text extends Figure {
         return false;
     }
 
-    protected void focus(Graphics g){
+    void focus(Graphics g){
         int y1 = this.y - this.h;
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));

@@ -24,7 +24,7 @@ public abstract class ButtonFig extends Button{
         this.fig.paint(g, false);
     }
 
-    protected void focus(Graphics g){
+    void focus(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(100, 100, 100));
         g2d.fillRect(this.x-2, this.y-2, this.w+4, this.h+4);

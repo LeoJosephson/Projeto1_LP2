@@ -74,7 +74,7 @@ public class Triangle extends Figure2d {
         else return false;
     }
 
-    protected void focus(Graphics g){
+    void focus(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(255, 0, 0));
         int[] coordsxf = new int[3];
