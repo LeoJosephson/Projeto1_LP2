@@ -1,5 +1,5 @@
 # Projeto LP2
- Final Project for LP2 (Programming Language 2) -> State University of Rio de Janeiro
+ Final Project for LP2 (Programming Language 2) -> UERJ -> State University of Rio de Janeiro
  
 **In this project I will be developing a diagram software using java**
  
