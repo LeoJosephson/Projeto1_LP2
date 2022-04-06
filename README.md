@@ -1,35 +1,7 @@
 # Projeto LP2
- Final Project for LP2
+ Final Project for LP2 (Programming Language 2) -> State University of Rio de Janeiro
  
- (pt-br)
- 
- **Nesse projeto, estarei desenvolvendo um software de diagramas usando java**
- 
-Recursos:
- 
- -> Criar figuras:
-  * Retângulo     (pressione r)
-  * Ellipse  (pressione e)
-  * Texto     (pressione t)
-  * Triangulo (pressione a)
-  * Também podem ser criadas através de botões. 
-
-->Outras:
-* Toda vez que um objeto é criado, ele se torna o objeto em foco
-* Selecionar objeto (botão direito/esquerdo do mouse)
-* Deletar objeto em foco (pressione del)
-* Recriar o ultimo objeto deletado (pressione z)
-* Muda a cor do objeto em foco aleatoriamente (pressione c)
-* Redimensionar objeto em foco (pressione + para aumentar ou - para diminuir)
-* Mover objeto em foco (⬅, ➡, ⬆, ⬇ ou arrastar o objeto com o mouse)
-
-
-->**Quando a janela do aplicativo for fechada, os objetos serão salvos em um arquivo binário.**
- 
-<hr>
-(en en)
-
-**In this project I will be developing an diagram software using java**
+**In this project I will be developing a diagram software using java**
  
  Features:
  
